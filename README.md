@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/infection/tests-checker.svg?branch=master)](https://travis-ci.org/infection/tests-checker)
+
 # Tests Checker
 
 To install this bot to your Open Sourced project:
