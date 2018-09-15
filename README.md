@@ -8,7 +8,8 @@ To install this bot to your Open Sourced project:
 * click "Install"
 * choose the repository you want to install `tests-checker` to
 
-<img width="1033" alt="tests-checker" src="https://user-images.githubusercontent.com/3725595/45590492-ede4ae80-b941-11e8-8ea7-180e1de7278e.png">
+<img width="990" alt="tests-checker" src="https://user-images.githubusercontent.com/3725595/45590526-b7f3fa00-b942-11e8-972d-143c0b367017.png">
+
 
 ## Settings
 
