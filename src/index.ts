@@ -5,7 +5,7 @@ export = (app: Application) => {
     app.on('pull_request.opened', async (context) => {
         const config = await context.config('tests_checker.yml', {
             comment: 'Could you please add tests to make sure this change works as expected?',
-            fileExtensions: ['.php', '.ts', '.js'],
+            fileExtensions: ['.php', '.ts', '.js', '.c', '.cs', '.cpp', '.rb', '.java'],
             testDir: 'tests',
         });
 
