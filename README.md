@@ -4,7 +4,7 @@ To install this bot to your Open Sourced project:
 
 * open https://github.com/apps/tests-checker
 * click "Install"
-* add it to your project
+* choose the repository you want to install `tests-checker` to
 
 ## Settings
 
@@ -18,15 +18,23 @@ fileExtensions: ['.php', '.ts', '.js']
 testDir: 'tests'
 ```
 
+where 
+
+* `comment` - a text that bot will post when it won't find tests in the PR
+* `fileExtensions` - extensions of the files that should be treated as a `source code`. Bot will do nothing if you just updating `README.md` because usually no tests are required to cover such change.
+* `testDir` - folder, where tests are located. Make sure to set it correctly, otherwise bot will not be able to understand whether the test file was added or not.
+
 If you want to change only directory where the tests are placed, just add `.github/tests_checker.yml`:
 
 ```yaml
 testDir: app-tests
 ```
 
-If you don't want to change anything, this files should not be created.
+If you don't want to change anything, you can skip creating this file.
 
 ## Setup
+
+This is needed if you want to deploy this bot to your server or want to contribute to it. Please note, that `tests-checker` is ready to use. You just need to install Github Application as mentioned in above.
 
 ```sh
 # Install dependencies
@@ -70,7 +78,7 @@ now alias set https://tests-checker-XYZ.now.sh https://tests-checker.now.sh
 
 ## Contributing
 
-If you have suggestions for how Botest could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
+If you have suggestions for how `tests-checker` could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
 

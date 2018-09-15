@@ -2,11 +2,6 @@ import {Application} from 'probot';
 import {getTouchedSourceFilesRequireTests, getTouchedTestFiles} from './fileFilters';
 
 export = (app: Application) => {
-    // todo parse "- [x] covered by tests" - case insensitive
-    // todo comment or reject review - based on settings
-    // todo documentation as now.sh site
-    // todo fix production mode
-
     app.on('pull_request.opened', async (context) => {
         const config = await context.config('tests_checker.yml', {
             comment: 'Could you please add tests to make sure this change works as expected?',

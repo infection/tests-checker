@@ -14,6 +14,6 @@ export function getTouchedTestFiles(
     files: Octokit.GetFilesResponseItem[],
     testDir: string): Octokit.GetFilesResponseItem[] {
     return files.filter((file) => {
-        return file.filename.indexOf(testDir) === 0;
+        return file.filename.indexOf(testDir + '/') === 0;
     });
 }
