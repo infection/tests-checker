@@ -19,7 +19,7 @@ Default values are:
 
 ```yaml
 comment: 'Could you please add tests to make sure this change works as expected?',
-fileExtensions: ['.php', '.ts', '.js']
+fileExtensions: ['.php', '.ts', '.js', '.c', '.cs', '.cpp', '.rb', '.java']
 testDir: 'tests'
 ```
 
