@@ -11,7 +11,7 @@ export = (app: Application) => {
 
         const issue = context.issue();
 
-        context.log('PR=' + 'https://github.com/' + issue.owner + '/' + issue.repo + '/' + issue.number);
+        context.log('PR=' + 'https://github.com/' + issue.owner + '/' + issue.repo + '/pull/' + issue.number);
 
         const files = await context.github.pullRequests.getFiles(issue);
 
