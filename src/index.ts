@@ -10,6 +10,9 @@ export = (app: Application) => {
         });
 
         const issue = context.issue();
+
+        context.log('PR=' + 'https://github.com/' + issue.owner + '/' + issue.repo + '/' + issue.number);
+
         const files = await context.github.pullRequests.getFiles(issue);
 
         const sourceFilesRequireTests = getTouchedSourceFilesRequireTests(files.data, config.fileExtensions);
