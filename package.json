@@ -1,7 +1,7 @@
 {
   "name": "tests-checker",
   "version": "1.0.0",
-  "description": "Requires writing the tests in the Pull Requests.",
+  "description": "Requires writing the tests in Pull Requests.",
   "author": "Maks Rafalko <maks.rafalko@gmail.com> (https://github.com/infection/tests-checker)",
   "license": "ISC",
   "repository": "https://github.com/infection/tests-checker.git",
