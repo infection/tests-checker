@@ -13,16 +13,19 @@ export = (app: Application) => {
 
         context.log('PR=' + 'https://github.com/' + issue.owner + '/' + issue.repo + '/pull/' + issue.number);
 
-        const files = await context.github.pullRequests.getFiles(issue);
+        const allFiles = await context.github.paginate(
+            context.github.pullRequests.getFiles(issue),
+            (res) => res.data,
+        );
 
-        const sourceFilesRequireTests = getTouchedSourceFilesRequireTests(files.data, config.fileExtensions);
+        const sourceFilesRequireTests = getTouchedSourceFilesRequireTests(allFiles, config.fileExtensions);
 
         if (sourceFilesRequireTests.length === 0) {
             context.log('PR does not have files that require tests. Skipping...');
             return;
         }
 
-        const testFiles = getTouchedTestFiles(files.data, config.testDir);
+        const testFiles = getTouchedTestFiles(allFiles, config.testDir);
 
         context.log('testFiles=', testFiles);
 
