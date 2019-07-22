@@ -14,7 +14,7 @@ export = (app: Application) => {
         context.log('PR=' + 'https://github.com/' + issue.owner + '/' + issue.repo + '/pull/' + issue.number);
 
         const allFiles = await context.github.paginate(
-            context.github.pullRequests.getFiles(issue),
+            context.github.pullRequests.listFiles(issue),
             (res) => res.data,
         );
 
