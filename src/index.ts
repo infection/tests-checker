@@ -7,6 +7,7 @@ export = (app: Application) => {
             comment: 'Could you please add tests to make sure this change works as expected?',
             fileExtensions: ['.php', '.ts', '.js', '.c', '.cs', '.cpp', '.rb', '.java'],
             testDir: 'tests',
+            testPattern: '',
         });
 
         const issue = context.issue();
@@ -25,7 +26,7 @@ export = (app: Application) => {
             return;
         }
 
-        const testFiles = getTouchedTestFiles(allFiles, config.testDir);
+        const testFiles = getTouchedTestFiles(allFiles, config.testDir, config.testPattern);
 
         context.log('testFiles=', testFiles);
 
