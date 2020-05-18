@@ -23,7 +23,7 @@ fileExtensions: ['.php', '.ts', '.js', '.c', '.cs', '.cpp', '.rb', '.java']
 testDir: 'tests'
 ```
 
-where 
+where
 
 * `comment` - a text that bot will post when it won't find tests in the PR
 * `fileExtensions` - extensions of the files that should be treated as a `source code`. Bot will do nothing if you just updating `README.md` because usually no tests are required to cover such change.
@@ -39,7 +39,9 @@ If you don't want to change anything, you can skip creating this file.
 
 ## Setup
 
-This is needed if you want to deploy this bot to your server or want to contribute to it. Please note, that `tests-checker` is ready to use. You just need to install Github Application as mentioned in above.
+This is needed if you want to deploy this bot to your server or want to contribute to it.
+Please note, that `tests-checker` is ready to use.
+You just need to install Github Application as mentioned in above.
 
 ```sh
 # Install dependencies
@@ -65,15 +67,15 @@ Deploy:
 
 ```bash
 now -e APP_ID=17064 \
-     -e WEBHOOK_SECRET=XXX \
-     -e PRIVATE_KEY_BASE64="$(cat ./key.pem | base64)"
+    -e WEBHOOK_SECRET=XXX \
+    -e PRIVATE_KEY_BASE64="$(cat ./key.pem | base64)"
 ```
 
 Set a permanent alias for the new deployed application URL:
 
 ```bash
 now alias set https://tests-checker-XYZ.now.sh https://tests-checker.now.sh
-``` 
+```
 
 ### Debugging `now.sh`
 
@@ -83,7 +85,8 @@ now alias set https://tests-checker-XYZ.now.sh https://tests-checker.now.sh
 
 ## Contributing
 
-If you have suggestions for how `tests-checker` could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
+If you have suggestions for how `tests-checker` could be improved, or want to report a bug, open an issue!
+We'd love all and any contributions.
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
