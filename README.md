@@ -21,6 +21,7 @@ Default values are:
 comment: 'Could you please add tests to make sure this change works as expected?',
 fileExtensions: ['.php', '.ts', '.js', '.c', '.cs', '.cpp', '.rb', '.java']
 testDir: 'tests'
+testPattern: ''
 ```
 
 where
@@ -28,8 +29,10 @@ where
 * `comment` - a text that bot will post when it won't find tests in the PR
 * `fileExtensions` - extensions of the files that should be treated as a `source code`. Bot will do nothing if you just updating `README.md` because usually no tests are required to cover such change.
 * `testDir` - folder, where tests are located. Make sure to set it correctly, otherwise bot will not be able to understand whether the test file was added or not.
+* `testPattern` - a shell glob pattern that should match test files.
 
-If you want to change only directory where the tests are placed, just add `.github/tests_checker.yml`:
+Both `testDir` and `testPattern` may be specified in a custom configuration, both settings will be used to locate test files.
+If you want to change any of the settings, just add `.github/tests_checker.yml`:
 
 ```yaml
 testDir: app-tests
