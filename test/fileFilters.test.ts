@@ -24,11 +24,32 @@ test('getTouchedTestFiles should return test files from the list of different fi
         {filename: 'lib/testsxxx/bar2.ts'} as Octokit.GetFilesResponseItem,
         {filename: 'a/test/bar3.ts'} as Octokit.GetFilesResponseItem,
         {filename: 'a/tests/bar4.ts'} as Octokit.GetFilesResponseItem,
+        {filename: 'test_test.ts'} as Octokit.GetFilesResponseItem,
     ];
 
-    const filteredFiles = getTouchedTestFiles(files, 'lib/tests');
+    const filteredFilesTestDir = getTouchedTestFiles(files, 'lib/tests', '');
+    expect(filteredFilesTestDir.length).toBe(2);
+    expect(filteredFilesTestDir[0].filename).toBe('lib/tests/bar1.ts');
+    expect(filteredFilesTestDir[1].filename).toBe('lib/tests/foo1.ts');
 
-    expect(filteredFiles.length).toBe(2);
-    expect(filteredFiles[0].filename).toBe('lib/tests/bar1.ts');
-    expect(filteredFiles[1].filename).toBe('lib/tests/foo1.ts');
+    const filteredFilesTestPatternSimple = getTouchedTestFiles(files, '', '*_test.ts');
+    expect(filteredFilesTestPatternSimple.length).toBe(1);
+    expect(filteredFilesTestPatternSimple[0].filename).toBe('test_test.ts');
+
+    const filteredFilesTestPatternSubdir = getTouchedTestFiles(files, '', '*/test/*.ts');
+    expect(filteredFilesTestPatternSubdir.length).toBe(1);
+    expect(filteredFilesTestPatternSubdir[0].filename).toBe('a/test/bar3.ts');
+
+    const filteredFilesTestPatternAllInTests = getTouchedTestFiles(files, '', '**/tests/*.ts');
+    expect(filteredFilesTestPatternAllInTests.length).toBe(3);
+    expect(filteredFilesTestPatternAllInTests[0].filename).toBe('lib/tests/bar1.ts');
+    expect(filteredFilesTestPatternAllInTests[1].filename).toBe('lib/tests/foo1.ts');
+    expect(filteredFilesTestPatternAllInTests[2].filename).toBe('a/tests/bar4.ts');
+
+    const filteredFilesTestBothDirAndPattern = getTouchedTestFiles(files, 'lib/testsxxx', '**/tests/*.ts');
+    expect(filteredFilesTestBothDirAndPattern.length).toBe(4);
+    expect(filteredFilesTestBothDirAndPattern[0].filename).toBe('lib/testsxxx/bar2.ts');
+    expect(filteredFilesTestBothDirAndPattern[1].filename).toBe('lib/tests/bar1.ts');
+    expect(filteredFilesTestBothDirAndPattern[2].filename).toBe('lib/tests/foo1.ts');
+    expect(filteredFilesTestBothDirAndPattern[3].filename).toBe('a/tests/bar4.ts');
 });

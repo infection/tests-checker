@@ -21,15 +21,18 @@ Default values are:
 comment: 'Could you please add tests to make sure this change works as expected?',
 fileExtensions: ['.php', '.ts', '.js', '.c', '.cs', '.cpp', '.rb', '.java']
 testDir: 'tests'
+testPattern: ''
 ```
 
-where 
+where
 
 * `comment` - a text that bot will post when it won't find tests in the PR
 * `fileExtensions` - extensions of the files that should be treated as a `source code`. Bot will do nothing if you just updating `README.md` because usually no tests are required to cover such change.
 * `testDir` - folder, where tests are located. Make sure to set it correctly, otherwise bot will not be able to understand whether the test file was added or not.
+* `testPattern` - a shell glob pattern that should match test files.
 
-If you want to change only directory where the tests are placed, just add `.github/tests_checker.yml`:
+Both `testDir` and `testPattern` may be specified in a custom configuration, both settings will be used to locate test files.
+If you want to change any of the settings, just add `.github/tests_checker.yml`:
 
 ```yaml
 testDir: app-tests
@@ -39,7 +42,9 @@ If you don't want to change anything, you can skip creating this file.
 
 ## Setup
 
-This is needed if you want to deploy this bot to your server or want to contribute to it. Please note, that `tests-checker` is ready to use. You just need to install Github Application as mentioned in above.
+This is needed if you want to deploy this bot to your server or want to contribute to it.
+Please note, that `tests-checker` is ready to use.
+You just need to install Github Application as mentioned in above.
 
 ```sh
 # Install dependencies
@@ -65,15 +70,15 @@ Deploy:
 
 ```bash
 now -e APP_ID=17064 \
-     -e WEBHOOK_SECRET=XXX \
-     -e PRIVATE_KEY_BASE64="$(cat ./key.pem | base64)"
+    -e WEBHOOK_SECRET=XXX \
+    -e PRIVATE_KEY_BASE64="$(cat ./key.pem | base64)"
 ```
 
 Set a permanent alias for the new deployed application URL:
 
 ```bash
 now alias set https://tests-checker-XYZ.now.sh https://tests-checker.now.sh
-``` 
+```
 
 ### Debugging `now.sh`
 
@@ -83,7 +88,8 @@ now alias set https://tests-checker-XYZ.now.sh https://tests-checker.now.sh
 
 ## Contributing
 
-If you have suggestions for how `tests-checker` could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
+If you have suggestions for how `tests-checker` could be improved, or want to report a bug, open an issue!
+We'd love all and any contributions.
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
