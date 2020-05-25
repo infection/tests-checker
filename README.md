@@ -74,6 +74,8 @@ now -e APP_ID=17064 \
     -e PRIVATE_KEY_BASE64="$(cat ./key.pem | base64)"
 ```
 
+See `WEBHOOK_SECRET` on GitHub app: https://github.com/settings/apps/tests-checker.
+
 Set a permanent alias for the new deployed application URL:
 
 ```bash
@@ -94,6 +96,14 @@ We'd love all and any contributions.
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
 > A GitHub App built with [Probot](https://github.com/probot/probot) that require writing tests in Pull Requests.
+
+# Developing
+
+1. Read https://probot.github.io/docs/development/#manually-configuring-a-github-app and configure `smee`
+2. add generated `smee` URL to `.env` - `WEBHOOK_PROXY_URL` variable, and to github app: https://github.com/settings/apps/tests-checker-dev
+3. Open terminal 1 and run `smee -u https://smee.io/xxx`
+4. open terminal 2 and run `npm start`
+5. now bot is ready to work from the local machine! 
 
 ## License
 
