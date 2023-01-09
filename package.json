@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "minimatch": "^3.0.4",
-    "probot": "^7.0.0"
+    "probot": "^12.2.8"
   },
   "devDependencies": {
     "@types/jest": "^23.1.5",
