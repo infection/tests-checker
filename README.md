@@ -1,4 +1,5 @@
 > **Warning**
+> 
 > This GitHub App has been deprecated in favor of GitHub Action with the same functionality: https://github.com/infection/tests-checker-action
 
 [![Build Status](https://travis-ci.org/infection/tests-checker.svg?branch=master)](https://travis-ci.org/infection/tests-checker)
